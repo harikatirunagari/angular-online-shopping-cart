@@ -1,0 +1,10 @@
+.textalignRight{
+  float:right;
+}
+
+.title{
+  background-color: #eee;;
+  font-size:25px;
+  padding:10px;
+  height:40px;
+}
