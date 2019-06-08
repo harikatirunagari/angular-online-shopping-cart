@@ -1,0 +1,53 @@
+<div class="jumbotron">
+  <h1>Welcome to Online Shopping Portal</h1>      
+  <small class='tag'>Here you find all varieties of products.Happy Shopping!!!</small>
+</div>
+
+<div class='panel panel-default'>
+  <div class='panel-heading'>Sign In</div>
+  <div class='panel-body'>
+    <form novalidate [formGroup]='loginForm' (ngSubmit)=onSubmit()>
+      <div class='form-group'>
+           <label>UserName</label>
+            <input type='text' class='form-control' [formControl]='userName'/>
+            <div *ngIf=userName.invalid&&(userName.dirty||userName.touched) class='alert alert-danger'>
+              <div *ngIf=userName.errors.required>
+                  User Name is required
+              </div>
+              <div *ngIf=userName.errors.minlength>
+                  User Name should contain minimum 3 chars.
+              </div>             
+            </div>           
+      </div>
+
+      <div class='form-group'>
+            <label>Password</label>
+            <input type='password' class='form-control' [formControl]='password'/>
+            
+            <div *ngIf=password.invalid&&(password.dirty||password.touched) class='alert alert-danger'>
+              <div *ngIf=password.errors.required>
+                  Password is required
+              </div>
+              <div *ngIf=password.errors.minlength>
+                Password should contain minimum of 6 chars
+              </div>
+              <div *ngIf=password.errors.maxlength>
+                Password can contain maximum of 12 chars
+              </div>
+              <div *ngIf=password.errors.pattern> 
+                Invalid Password Pattern
+              </div>
+            </div>
+           
+      </div>
+
+      <button type='submit' class='btn btn-primary' [disabled]=loginForm.invalid >Submit</button>
+      <span *ngIf=loginFailed>Login Failed !!!</span>
+    </form>
+
+
+  </div>
+  <div class="panel-footer">
+    <a routerLink='../signUp'>Click Here to SignUp</a>
+  </div>
+</div>
