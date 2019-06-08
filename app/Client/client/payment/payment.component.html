@@ -1,0 +1,56 @@
+<div class='page-header'>
+  Payment Order
+</div>
+
+<form #payForm='ngForm' (ngSubmit)='takeOrder(payForm)'>
+  <div class="form-group">
+      <label for="address">Shipping Address:</label>
+      <textarea class="form-control" rows="5" id="address" name='address' [(ngModel)]='address' #address1="ngModel"></textarea>
+  </div>
+
+  <div>
+    <label>Enter Near Locality</label>
+    <input type='text' class='form-control' name='locality' [(ngModel)]='locality' #locality1="ngModel"/>
+  </div>
+
+  <div class='form-group'>
+    <label>Total Items in the Cart</label>
+    <input type='number' class='form-control' name='totalItems' value={{totalItems}} readonly [(ngModel)]='totalItems' #totalItems1="ngModel"/>
+  </div>
+
+  <div class='form-group'>
+    <label>Total Amount</label>
+    <input type='number' class='form-control' name='totalAmount' value={{totalAmount}} [(ngModel)]='totalAmount' #totalAmount1="ngModel" readonly/>
+  </div>
+
+  <div class='form-group'>
+    <label>Registered Email Address</label>
+    <input type='email' class='form-control' name='emailId' [(ngModel)]='emailId' #emailId1="ngModel"/>
+  </div>
+
+   <label class="radio-inline">
+      <input type="radio" name="Pay" #cardPay>Payment through Credit/Debit
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="Pay">Cash On Delivery
+    </label>
+
+    <div class='form-group' *ngIf=cardPay.checked>
+      <div>
+        <label>Card Number</label>
+        <input type=number name='cardNumber' class='form-control' [(ngModel)]="cardNumber" #cardNumber1="ngModel"/>
+      </div>
+      <div>
+        <label>CVV</label>
+        <input type='number' name='cvv' class='form-control' [(ngModel)]="cvv" #cvv1="ngModel"/>
+      </div>
+    </div>
+
+    <div class='pull-right'>
+      <button type='submit' class='btn btn-success'>Place Order</button>
+    </div>    
+</form>
+
+<div *ngIf=showShipping>
+  Your Shipping ID {{shippingId}}
+</div>
