@@ -1,0 +1,42 @@
+<div class='page-header'>
+  Products Added to the Cart
+</div>
+<table class='table table-stripped table-hover'>
+  <thead>
+    <th></th>
+    <th>ProductName</th>
+    <th>Brand</th>
+    <th>Price</th>
+  </thead>
+  <tr *ngFor='let product of cartProducts'>
+    <td>
+      <img src={{product.productImg}} alt='no Image' class='img-thumbnail productCartImg'/>
+    </td>
+    <td>{{product.productName}}</td>
+    <td>{{product.productBrand}}</td>
+    <td>{{product.productPrice | currency:"INR":true}}</td>
+    <td>
+      <button class='btn' (click)='removeProduct(product)'>Remove</button>
+    </td>
+  </tr>
+  <tr>
+    <td>Total Items</td>
+    <th>{{totalItems}}</th>
+    <td>Total Price</td>
+    <th>{{totalPrice | currency:"INR":true}}</th>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>
+      <button class='btn bt-success'  (click)=proceedToPayment()>Proceed to Payment</button>
+    </td>
+    <td></td>
+    <td></td>
+  </tr>  
+</table>
+
+<div *ngIf=!totalItems>
+  No Items Please Select Items to Cart !!!
+</div>
