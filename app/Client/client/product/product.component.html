@@ -1,0 +1,36 @@
+<table *ngFor='let p of productsList' class='product' cellpadding=5  cellspacing=5>
+  <thead>
+    <tr>       
+      <td colspan='3'>
+       <img src={{p.productImg}} class="img-thumbnail productImage" alt='Image could not be displayed'/>
+      </td>
+    </tr>    
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td>{{p.productName}}</td>
+          
+    </tr>
+    <tr>
+      <td>Price:</td>
+      <td>{{p.productPrice | currency: 'INR':true}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Brand:</td>
+      <td>{{p.productBrand}}</td>
+      <td></td>
+    </tr>
+    <tr class="table-danger">
+      <td></td>
+      <td>
+         <button class='btn btn-default' (click)='addToCart(p)'>Add to Cart</button>
+      </td>
+      <td></td>
+      <td></td>   
+    </tr>
+    
+  </tbody>
+  <tfoot></tfoot>
+</table>
