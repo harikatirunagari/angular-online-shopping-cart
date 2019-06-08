@@ -1,0 +1,69 @@
+<div class="page-header">
+    <h1 class='subtitle'>Please SignUp !!!</h1>      
+</div>
+
+<div class='panel panel-default'>
+  <div class='panel panel-heading'>SignUp</div>
+  <div class='panel panel-body'>
+    <form #f='ngForm'  (ngSubmit)='submitData(f)'>
+
+       <div class='form-group'>
+        <label>User Name</label>
+        <input type='text' name='userName' class='form-control' [(ngModel)]=userName required minlength='3' #uN='ngModel'/>
+
+        <div *ngIf=uN.invalid&&(uN.dirty||uN.touched) class='alert alert-danger'>
+          <div  *ngIf=uN.errors.required> 
+            User Name is required
+          </div>
+          <div *ngIf=uN.errors.minlength>
+            User Name should have min of 3 chars
+          </div>     
+        </div>       
+    </div>
+      
+
+      <div class='form-group'>
+        <label>Password</label>
+        <input type='password' name='password' [(ngModel)]=password #Password="ngModel" required minlength=6  class='form-control'/>
+        <small id="passwordHelp" class="form-text text-muted">Password should contain minimum of 6 
+chars </small>
+
+        <div *ngIf=Password.invalid&&(Password.dirty||Password.touched) class='alert alert-danger'>
+              <div *ngIf='Password.errors?.required'>
+                  Password is required
+              </div>
+            <div *ngIf='Password.errors.minlength'>
+                Password should contain minimum of 6 chars
+              </div>            
+        </div>
+    </div>  
+
+
+     <div class='form-group'>
+        <label>Email</label>
+        <input type='email' name='emailId' class='form-control' [(ngModel)]=emailId required #mail='ngModel' pattern="[^ @]*@[^ @]*" appSampleSelection='greet'/>
+
+        <div *ngIf=mail.invalid&&(mail.dirty||mail.touched) class='alert alert-danger'>
+          <div  *ngIf='mail.errors?.required' > 
+            Mail is required
+          </div>
+          <div *ngIf='mail.errors?.pattern' >
+            Invalid Pattern
+          </div>
+          <div *ngIf='mail.errors?.emailDomain?.domain'>
+            Please give only {{mail.errors?.emailDomain?.domain}} Domain
+          </div>  
+
+         
+        </div>       
+    </div>
+    
+
+
+      <button type='submit' class='btn btn-primary' [disabled]=f.invalid>Submit</button>
+      
+</form>
+  </div>
+
+</div>
+
