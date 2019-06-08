@@ -1,0 +1,30 @@
+<table class="table table-striped">
+  <tr>
+    <th></th>
+    <th>Product Name</th>   
+    <th>Category</th>
+    <th>Brand</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr *ngFor='let i of allProducts'>
+    <td>
+      <img src='{{i.productImg}}' alt='no Image' class='img-thumbnail viewsmallImage'/>
+    </td>
+    <td>{{i.productName}}</td>
+    <td>{{i.category}}</td>
+    <td>{{i.productBrand}}</td>
+    <td>{{i.productPrice | currency:"INR":true}}</td>   
+    <td>
+      <button class='btn' (click)='updateProduct(i)'>Update</button>
+    </td>
+    <td>
+      <button class='btn' (click)='deleteProduct(i)'>Delete</button>
+    </td>
+  </tr>
+</table>
+
+<div class='container'>
+  <app-update-product [productData]='selectedProduct'  (refreshRequest)=refreshDataRequest($event)></app-update-product>
+</div>
