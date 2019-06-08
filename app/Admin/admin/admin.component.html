@@ -1,0 +1,35 @@
+<div class='title'>
+  Admin Logged in !!!
+  <div class='btn btn-link textalignRight'>
+  <a (click)='logout()'>
+    Logout
+  </a>
+</div>
+</div>
+
+<br/><br/>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li>
+        <a routerLink="addProduct">
+          Add Product
+        </a>
+      </li>
+      <li>
+        <a routerLink="listProducts">
+          Display Products
+        </a>
+      </li>
+      <li>
+          <a routerLink='shippingDetails'>
+              Shipping Details
+          </a>
+      </li>      
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
